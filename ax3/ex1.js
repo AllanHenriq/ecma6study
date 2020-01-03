@@ -1,19 +1,20 @@
 class Usuario{
-    admin;
-    email;
-    senha;
+
     constructor(email,senha){
         this.email = email;
         this.senha = senha;
-    };
-    admin=false;
+        this.admin = false;
+    }
     isAdmin(){
         return this.admin
     }
 }
 
 class Admin extends Usuario{
-    admin=true;
+    constructor(){
+        super();
+        this.admin = true;
+    }
 }
 
 

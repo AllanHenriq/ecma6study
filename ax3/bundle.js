@@ -1,7 +1,66 @@
 "use strict";
 
-var arr = [1, 3, 4, 5, 8, 9];
-var newArr = arr.map(function (item, index) {
-  return total + index;
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//A partir do array: const arr = [1, 2, 3, 4, 5, 6], defina uma variável x que recebe a primeira
+// posição do vetor e outra variável y que recebe todo restante dos dados.
+var arr = [1, 2, 3, 4, 5, 6];
+var x = arr[0],
+    y = arr.slice(1);
+console.log(x);
+console.log(y); //Crie uma função que recebe inúmeros parâmetros e retorna a soma de todos eles:
+
+var soma = function soma() {
+  for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
+    params[_key] = arguments[_key];
+  }
+
+  return params.reduce(function (total, next) {
+    return total + next;
+  });
+};
+
+console.log(soma(12, 13, 14)); // 5.2 Spread
+
+var usuario = {
+  nome: 'Diego',
+  idade: 23,
+  endereco: {
+    cidade: 'Rio do Sul',
+    uf: 'SC',
+    pais: 'Brasil'
+  }
+};
+
+var usuario2 = _objectSpread({}, usuario, {
+  nome: 'Gabriel'
 });
-console.log(newArr);
+
+console.log(usuario2);
+
+var usuario3 = _objectSpread({}, usuario, {
+  endereco: _objectSpread({}, usuario.endereco, {
+    cidade: 'Lontras'
+  })
+});
+
+console.log(usuario3); //exercicio 6
+//Literals
+
+var usuarioLit = 'Diego';
+var idadeLit = 23;
+console.log("O usu\xE1rio ".concat(usuarioLit, " possui ").concat(idadeLit, " anos")); //exercicio 7
+//Object Short Syntax
+
+var nome = 'Diego';
+var idade = 23;
+var usuarioOSS = {
+  nome: nome,
+  idade: idade,
+  cidade: 'Rio do Sul'
+};
+console.log(usuarioOSS);

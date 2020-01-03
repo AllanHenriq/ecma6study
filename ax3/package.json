@@ -8,6 +8,6 @@
     "@babel/preset-env": "^7.7.7"
   },
   "scripts":{
-    "dev": "babel ./ex1.js -o ./bundle.js -w"
+    "dev": "babel ./ex5.js -o ./bundle.js -w"
   }
 }
